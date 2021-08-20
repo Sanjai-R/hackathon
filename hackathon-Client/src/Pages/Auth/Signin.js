@@ -1,21 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "@material-ui/core";
 import InputCard from "../../components/Input";
 import { CardStyles } from "./style.js";
-import Button from '../../components/Button';
-import { Link } from "react-router-dom";
+import Button from "../../components/Button";
+import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
+import { baseurl } from "../../utils/baseUrl";
+
 export default function Signup() {
-    const classes = CardStyles();
+  const classes = CardStyles();
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const hisrory = useHistory();
+
+  const loginHandller = () => {
+    if (username.length > 0 && password.length > 0) {
+      const data = {
+        username: username,
+        password: password,
+      };
+      axios
+        .post(`${baseurl}/auth/login`, data)
+        .then((res) => {
+          if (res.data.success) {
+            localStorage.setItem("token", res.data.accesstoken);
+            hisrory.push("/");
+          } else {
+            alert(res.data.desc);
+          }
+        })
+        .catch((err) => {
+          alert("Something Went Wrong! Try Again");
+        });
+    } else {
+      alert("All Fields Are Required");
+    }
+  };
+
   return (
     <>
       <Card className={classes.root}>
         <div className={classes.subroot}>
-          <h1 style={{fontWeight:"500"}}>Login</h1>
-          <InputCard text="UserName" />
-          <InputCard text="Password" />
-          <Button text="Sign in your Account" width="95%" padding="10px 20px" />
-          <hr style={{margin:"15px 50px",width:"80%"}}/>
-          <p style={{textAlign:"center",margin:"10px"}}>OR</p>
+          <h1 style={{ fontWeight: "500" }}>Login</h1>
+          <InputCard
+            text="UserName"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <InputCard
+            text="Password"
+            value={password}
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button
+            text="Sign in your Account"
+            width="95%"
+            padding="10px 20px"
+            onClick={loginHandller}
+          />
+          <hr style={{ margin: "15px 50px", width: "80%" }} />
+          <p style={{ textAlign: "center", margin: "10px" }}>OR</p>
           <Link to="/Signup" className={classes.txt_btn}>
             Create your free account
           </Link>
