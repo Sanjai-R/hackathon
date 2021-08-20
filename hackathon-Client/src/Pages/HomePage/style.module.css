@@ -1,0 +1,47 @@
+.root {
+  display: flex;
+  align-items: center;
+  flex-wrap: row wrap;
+}
+.img {
+  max-width: 60%;
+}
+.left_content {
+  width: 35%;
+  margin: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  justify-content: flex-end;
+  text-align: left;
+}
+.left_content_title {
+  color: #3930d8;
+  font-size: 52px;
+  font-weight: 600;
+}
+.left_content_subtitle {
+  font-size: 28px;
+  line-height: 40px;
+  font-weight: 400;
+}
+
+@media only screen and (max-width: 968px) {
+  .root {
+    flex-direction: column;
+  }
+  .left_content {
+    width: 90%;
+    margin: 0px;
+    text-align: center;
+  }
+  .left_content_title {
+    font-size: 32px;
+  }
+  .left_content_subtitle {
+    font-size: 20px;
+  }
+  .exp_btn{
+    text-align: center;
+}
+}
