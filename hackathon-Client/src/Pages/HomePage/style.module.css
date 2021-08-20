@@ -45,3 +45,13 @@
     text-align: center;
 }
 }
+@media only screen and (max-width: 1280px) {
+
+  .left_content_title {
+    font-size: 42px;
+  }
+  .left_content_subtitle {
+    font-size: 24px;
+  }
+  
+}
