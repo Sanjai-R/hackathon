@@ -13,8 +13,8 @@ export const CardStyles = makeStyles((theme) => {
       transform: "translate(-50%,-50%)",
       [theme.breakpoints.down("md")]: {
         width: "300px",
-        margin: "5% 0px"
-      }
+        margin: "5% 0px",
+      },
     },
     txt_btn: {
       fontWeight: "500",
@@ -22,17 +22,17 @@ export const CardStyles = makeStyles((theme) => {
       textAlign: "center",
       marginLeft: "15%",
       [theme.breakpoints.down("md")]: {
-        fontSize: "14px"
-      }
+        fontSize: "14px",
+      },
     },
     subroot: {
-      margin: "20px"
+      margin: "20px",
     },
     title: {
       fontWeight: "600",
       [theme.breakpoints.down("md")]: {
-        fontSize: "18px"
-      }
-    }
+        fontSize: "18px",
+      },
+    },
   };
 });

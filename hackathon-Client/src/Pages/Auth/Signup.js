@@ -10,9 +10,7 @@ export default function Signup() {
     <>
       <Card className={classes.root}>
         <div className={classes.subroot}>
-          <h1 className={classes.title}>
-            Signup
-          </h1>
+          <h1 className={classes.title}>Signup</h1>
           <InputCard text="UserName" />
           <InputCard text="FullName" />
           <InputCard text="Email Address" />
