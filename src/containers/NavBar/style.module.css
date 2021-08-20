@@ -1,0 +1,15 @@
+.nav_items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+}
+@media only screen and (max-width: 800px) {
+  .nav_items {
+  display: none;
+ 
+}
+}
