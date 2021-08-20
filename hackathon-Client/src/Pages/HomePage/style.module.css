@@ -7,7 +7,7 @@
   max-width: 60%;
 }
 .left_content {
-  width: 35%;
+  width: 34%;
   margin: 32px;
   display: flex;
   flex-direction: column;
@@ -17,13 +17,14 @@
 }
 .left_content_title {
   color: #3930d8;
-  font-size: 52px;
+  font-size: 42px;
   font-weight: 600;
 }
 .left_content_subtitle {
-  font-size: 28px;
-  line-height: 40px;
+  font-size: 18px;
+  line-height: 30px;
   font-weight: 400;
+  width: 90%;
 }
 
 @media only screen and (max-width: 968px) {
@@ -36,10 +37,10 @@
     text-align: center;
   }
   .left_content_title {
-    font-size: 32px;
+    font-size: 24px;
   }
   .left_content_subtitle {
-    font-size: 20px;
+    font-size: 14px;
   }
   .exp_btn{
     text-align: center;
@@ -51,7 +52,8 @@
     font-size: 42px;
   }
   .left_content_subtitle {
-    font-size: 24px;
+    font-size: 20px;
+    width: 100%;
   }
   
 }

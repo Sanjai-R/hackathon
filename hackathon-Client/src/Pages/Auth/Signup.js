@@ -10,14 +10,16 @@ export default function Signup() {
     <>
       <Card className={classes.root}>
         <div className={classes.subroot}>
-          <h1 className={classes.title}>Signup</h1>
+          <h1 className={classes.title}>
+            Signup
+          </h1>
           <InputCard text="UserName" />
           <InputCard text="FullName" />
           <InputCard text="Email Address" />
           <InputCard text="Password" />
-          <Button text="Sign in your Account" width="95%" padding="15px 5px" />
+          <Button text="Sign in your Account" width="95%" padding="15px 10px" />
           <hr style={{ margin: "20px", width: "90%" }} />
-          <p style={{ textAlign: "center", margin: "5px" }}>OR</p>
+          <p style={{ textAlign: "center", margin: "10px" }}>OR</p>
           <Link to="/Signin" className={classes.txt_btn}>
             Already have an account
           </Link>

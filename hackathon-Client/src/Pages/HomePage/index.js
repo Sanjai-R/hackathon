@@ -12,12 +12,18 @@ export default function HomePage() {
               Good books don't give up all their secrets at once
             </p>
             <p className={styles.left_content_subtitle}>
-              Contrary to popular belief, Lorem Ipsum is not simply random text.
-              It has roots in a piece of classical Latin literature from 45 BC,
-              making it over 2000 years old. Richard McClintock
+              Kindness planned is no kindness, only kindness done is
+              kindness."""We appreciate it and are thankful. Words are fleeting,
+              and we want you to know that a simple “thank you” doesn’t do
+              justice to how deeply we appreciate your support.
             </p>
             <div className={styles.exp_btn}>
-              <Button text="Explore stuffs" fsize="22px" width="50%" height="50px"/>
+              <Button
+                text="Explore stuffs"
+                fsize="22px"
+                width="50%"
+                height="50px"
+              />
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@ function Image({ src, alt, className, style }) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [reload, setReload] = useState(0);
   const img = useRef(null);
-
+  
   useEffect(() => {
     if (img.current.complete === true) setImageLoaded(true);
   }, []);

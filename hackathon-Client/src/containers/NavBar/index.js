@@ -14,10 +14,10 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     justifyContent: "space-between",
     width: "100%",
-    padding: "10px 15%",
+    padding: "10px 8%",
     alignItems: "center",
     [theme.breakpoints.down("md")]: {
-      padding: "10px 15%"
+      padding: "10px 10%"
     }
   }
 }));
@@ -34,7 +34,7 @@ export default function MenuAppBar() {
   return (
     <>
       <AppBar position="static" className={classes.root}>
-        <h2>School Sharing</h2>
+        <h2>ShoppingCaring</h2>
         <div className={styles.nav_items}>
           {drawerList.map((item, i) => {
             return (
@@ -44,7 +44,7 @@ export default function MenuAppBar() {
             );
           })}
           <Link to={"/Signin"}>
-            <Button text="Login" padding="5px 10px" />
+            <Button text="Login" fsize="16px" padding="3px 20px" />
           </Link>
         </div>
       </AppBar>
