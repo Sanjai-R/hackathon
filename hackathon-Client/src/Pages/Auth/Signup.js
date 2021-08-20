@@ -15,9 +15,9 @@ export default function Signup() {
           <InputCard text="FullName" />
           <InputCard text="Email Address" />
           <InputCard text="Password" />
-          <Button text="Sign in your Account" width="95%" padding="15px 10px" />
+          <Button text="Sign in your Account" width="95%" padding="15px 5px" />
           <hr style={{ margin: "20px", width: "90%" }} />
-          <p style={{ textAlign: "center", margin: "10px" }}>OR</p>
+          <p style={{ textAlign: "center", margin: "5px" }}>OR</p>
           <Link to="/Signin" className={classes.txt_btn}>
             Already have an account
           </Link>
