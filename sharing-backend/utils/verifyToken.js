@@ -7,20 +7,20 @@ const VerifyToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
 
   if (authHeader === "Bearer null")
-    return res.redirect(`${CLIENT_DOMAIN}/login`);
+    return res.redirect(`${CLIENT_DOMAIN}/Signin`);
 
   const token = authHeader && authHeader.split(" ")[1];
-  if (token == null) return res.redirect(`${CLIENT_DOMAIN}/login`);
+  if (token == null) return res.redirect(`${CLIENT_DOMAIN}/Signin`);
 
   jwt.verify(token, "grjaejrg@jfg", (err, data) => {
-    if (err) return res.redirect(`${CLIENT_DOMAIN}/login`);
+    if (err) return res.redirect(`${CLIENT_DOMAIN}/Signin`);
     User.findOne({ username: data.user })
       .then((user) => {
         req.user = user;
         next();
       })
       .catch((err) => {
-        res.redirect(`${CLIENT_DOMAIN}/login`);
+        res.redirect(`${CLIENT_DOMAIN}/Signin`);
       });
   });
 };

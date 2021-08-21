@@ -7,9 +7,24 @@
   font-size: 20px;
   font-weight: 500;
 }
+.menuIco {
+  display: none;
+}
+.drawerRoot {
+  padding: 20px 30px;
+}
+.drawer_link_items {
+  line-height: 2;
+  font-weight: 500;
+}
+.drawer_btn {
+  margin-top: 30px;
+}
 @media only screen and (max-width: 800px) {
   .nav_items {
-  display: none;
- 
-}
+    display: none;
+  }
+  .menuIco {
+    display: block;
+  }
 }

@@ -28,7 +28,7 @@ export default function Signup() {
         username,
         fullname,
         email,
-        password,
+        password
       };
 
       axios
@@ -54,9 +54,6 @@ export default function Signup() {
     <>
       <Card className={classes.root}>
         <div className={classes.subroot}>
-
-         
-          
           <h1 className={classes.title}>Signup</h1>
           <InputCard
             text="UserName"

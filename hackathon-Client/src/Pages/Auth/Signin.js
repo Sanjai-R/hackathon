@@ -58,15 +58,18 @@ export default function Signup() {
           />
           <Button
             text="Sign in your Account"
-            width="95%"
+            width="80%"
             padding="10px 20px"
+            margin="20px 10%"
             onClick={loginHandller}
           />
-          <hr style={{ margin: "15px 50px", width: "80%" }} />
+          <hr style={{ width: "100%" }} />
           <p style={{ textAlign: "center", margin: "10px" }}>OR</p>
-          <Link to="/Signup" className={classes.txt_btn}>
-            Create your free account
-          </Link>
+          <div className={classes.txt_btn}>
+            <Link to="/Signup" className={classes.txt_btn}>
+              Create your free account
+            </Link>
+          </div>
         </div>
       </Card>
     </>
