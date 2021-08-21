@@ -5,6 +5,7 @@ export default function Input({ text, onChange, type = "text", value }) {
     <input
       type={type}
       value={value}
+      accept={type === "file" && "image/*"}
       placeholder={text}
       className={styles.input}
       onChange={onChange}

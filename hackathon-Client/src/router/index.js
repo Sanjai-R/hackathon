@@ -5,6 +5,7 @@ import Login from "../Pages/Auth/Signin";
 import NavBar from "../containers/NavBar";
 import Books from "../Pages/Books";
 import Signup from "../Pages/Auth/Signup";
+import Dashboard from "../Pages/Dashboard";
 const AppRouter = () => {
   return (
     <BrowserRouter>
@@ -14,6 +15,7 @@ const AppRouter = () => {
         <Route exact path="/Signin" component={Login} />
         <Route exact path="/Signup" component={Signup} />
         <Route exact path="/books" component={Books} />
+        <Route path="/dashboard" component={Dashboard} />
       </Switch>
     </BrowserRouter>
   );
