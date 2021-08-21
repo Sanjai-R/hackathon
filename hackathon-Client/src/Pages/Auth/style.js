@@ -7,7 +7,7 @@ export const CardStyles = makeStyles((theme) => {
       boxShadow: "0px 0px 12px #00000029",
       borderRadius: "10px",
       opacity: 1,
-      marginTop:"40px",
+      marginTop: "40px",
       position: "absolute",
       top: "50%",
       left: "50%",
@@ -20,8 +20,8 @@ export const CardStyles = makeStyles((theme) => {
     txt_btn: {
       fontWeight: "500",
       fontSize: "24px",
+      width: "100%",
       textAlign: "center",
-      marginLeft: "15%",
       [theme.breakpoints.down("md")]: {
         fontSize: "14px",
       },
