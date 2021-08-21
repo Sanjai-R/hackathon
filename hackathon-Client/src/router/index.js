@@ -7,6 +7,8 @@ import Books from "../Pages/Books";
 import Stationary from "../Pages/Stationary";
 import Signup from "../Pages/Auth/Signup";
 import SingleProduct from "../Pages/SinglePage/";
+import Dashboard from "../Pages/Dashboard";
+
 const AppRouter = () => {
   return (
     <BrowserRouter>
@@ -18,6 +20,8 @@ const AppRouter = () => {
         <Route exact path="/books" component={Books} />
         <Route exact path="/stationary" component={Stationary} />
         <Route path="/SingleProduct/:id/:type" component={SingleProduct} />
+
+        <Route path="/dashboard" component={Dashboard} />
 
       </Switch>
     </BrowserRouter>

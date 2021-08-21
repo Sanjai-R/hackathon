@@ -1,9 +1,8 @@
 import cloudinary from "../../utils/clouidinary.js";
-import fileUpload from "express-fileupload";
 import { Stationary, User } from "../InterCOM/models.js";
 import path from "path";
 
-const __dirname = path.resolve();
+let __dirname = path.resolve();
 
 const uploadStationary = async (req, res) => {
   const image = req.files?.file;
@@ -15,13 +14,13 @@ const uploadStationary = async (req, res) => {
 
   if (image) {
     image.mv(
-      `${__dirname}/public/assets/uploads/${image.name}-${Date.now()}`,
+      `${__dirname}/public/assets/uploads/${image.name}`,
       (err) => {
         if (err) {
           console.error(err);
           return false;
         }
-        url = `${__dirname}/public/assets/uploads/${image.name}-${Date.now()}`;
+        url = `${__dirname}/public/assets/uploads/${image.name}`;
       }
     );
   }
