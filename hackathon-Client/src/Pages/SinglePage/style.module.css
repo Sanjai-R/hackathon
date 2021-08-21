@@ -1,14 +1,18 @@
 .root {
   width: 60%;
-  height: 50vh;
+  height: 60vh;
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 0px 12px #00000029;
   border-radius: 10px;
-
   margin: 10% 25%;
   opacity: 1;
   display: flex;
   justify-content: space-between;
+}
+.desc {
+  max-height: 150px;
+  margin: 20px 0;
+  overflow-y: scroll;
 }
 .left_container {
   width: 80%;
@@ -26,10 +30,10 @@
     flex-direction: column-reverse;
     height: 600px;
     width: 100%;
-    margin:300px 0 0 0;
+    margin: 300px 0 0 0;
   }
-  .subtitle{
-      font-size: 22px;
+  .subtitle {
+    font-size: 22px;
   }
   .img {
     width: 100%;
@@ -37,10 +41,10 @@
   }
   .left_container {
     margin: 20px;
-    gap:12px
+    gap: 12px;
   }
-  .desc_cont{
-      font-size: 18px;
+  .desc_cont {
+    font-size: 18px;
   }
   .desc {
     height: 200px;

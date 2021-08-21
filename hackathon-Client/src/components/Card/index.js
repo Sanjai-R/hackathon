@@ -1,22 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Card,
   CardActions,
   CardContent,
   CardMedia,
-  Button,
   Typography,
 } from "@material-ui/core/";
 import CustomButton from "../Button";
-import { useDispatch } from "react-redux";
 import useStyles from "./style";
 import { Link } from "react-router-dom";
 
-
-const Cards = ({ data,type }) => {
-  
+const Cards = ({ data, type }) => {
   const classes = useStyles();
-  console.log(type)
+  console.log(type);
   return (
     <Card className={classes.card}>
       <CardMedia
@@ -45,7 +41,7 @@ const Cards = ({ data,type }) => {
         style={{
           fontFamily: "Montserrat",
           marginBottom: "0px",
-          marginTop: "10px"
+          marginTop: "10px",
         }}
       >
         {type === "book" ? data.bookname : data.productname}

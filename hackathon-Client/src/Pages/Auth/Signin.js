@@ -6,7 +6,7 @@ import Button from "../../components/Button";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { baseurl } from "../../utils/baseUrl";
-import { logout, auth } from "../../redux/Actions/Actiontype";
+import { auth } from "../../redux/Actions/Actiontype";
 import { useDispatch } from "react-redux";
 export default function Signup() {
   const classes = CardStyles();
@@ -25,7 +25,6 @@ export default function Signup() {
         .post(`${baseurl}/auth/login`, data)
         .then((res) => {
           if (res.data.success) {
-            
             localStorage.setItem("token", res.data.accesstoken);
             dispatch({ type: auth, data: res.data });
             hisrory.push("/");

@@ -10,11 +10,12 @@ export default function CustomButton({
   fsize,
   height,
   margin,
+  disabled,
 }) {
   const btnStyles = makeStyles((theme) => {
     return {
       btn: {
-        backgroundColor: "#16191f",
+        backgroundColor: disabled ? "red" : "#16191f",
         color: "#fff",
         borderRadius: "5px",
         padding: `${padding}`,
@@ -39,8 +40,8 @@ export default function CustomButton({
 
   const styles = btnStyles();
   return (
-    <Button onClick={onClick} className={styles.btn}>
-      {text}
+    <Button onClick={onClick} className={styles.btn} disabled={disabled}>
+      {disabled ? "Already Requested" : text}
     </Button>
   );
 }
