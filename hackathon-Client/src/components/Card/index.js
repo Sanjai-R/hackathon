@@ -1,4 +1,7 @@
+
 import React, {useEffect } from "react";
+
+
 import {
   Card,
   CardActions,
@@ -9,10 +12,11 @@ import {
 import {  auth } from "../../redux/Actions/Actiontype";
 import axios from "axios";
 import CustomButton from "../Button";
-import { useDispatch,useSelector } from "react-redux";
 
+import { useDispatch,useSelector } from "react-redux";
 import useStyles from "./style";
 import { Link } from "react-router-dom";
+
 import { baseurl } from "../../utils/baseUrl";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
@@ -58,6 +62,9 @@ const Cards = ({ data,type }) => {
           });
         }
       };
+
+
+
   return (
     <Card className={classes.card}>
       <CardMedia
@@ -86,7 +93,7 @@ const Cards = ({ data,type }) => {
         style={{
           fontFamily: "Montserrat",
           marginBottom: "0px",
-          marginTop: "10px"
+          marginTop: "10px",
         }}
       >
         {type === "book" ? data.bookname : data.productname}

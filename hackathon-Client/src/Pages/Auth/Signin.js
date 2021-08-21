@@ -6,7 +6,7 @@ import Button from "../../components/Button";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { baseurl } from "../../utils/baseUrl";
-import { logout, auth } from "../../redux/Actions/Actiontype";
+import { auth } from "../../redux/Actions/Actiontype";
 import { useDispatch } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";

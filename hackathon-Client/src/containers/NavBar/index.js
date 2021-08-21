@@ -48,19 +48,19 @@ export default function MenuAppBar() {
           alert(res.data.desc);
         }
       });
+    // eslint-disable-next-line
   }, []);
   const classes = useStyles();
   const drawerList = [
     { text: "Home", slug: "/" },
     { text: "Books", slug: "/books" },
     { text: "Stationary", slug: "/stationary" },
-    { text: "Chat", slug: "/chat" },
-    { text: "DashBoard", slug: "/DashBoard" },
+    { text: "Dashboard", slug: "/DashBoard" },
   ];
 
   return (
     <>
-      <AppBar position="static" className={classes.root}  >
+      <AppBar position="static" className={classes.root}>
         <h2>ShoppingCaring</h2>
         <div className={styles.menuIco}>
           <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
@@ -77,16 +77,25 @@ export default function MenuAppBar() {
           })}
 
           {user != null ? (
-            <Link to={"/Signin"}>
-              <Button
-                text="Logout"
-                fsize="16px"
-                padding="3px 20px"
-                onClick={() => {
-                  dispatch({ type: logout });
-                }}
+            <>
+              <Link to={"/Signin"}>
+                <Button
+                  text="Logout"
+                  fsize="16px"
+                  padding="3px 20px"
+                  onClick={() => {
+                    dispatch({ type: logout });
+                  }}
+                />
+              </Link>
+              <img
+                src={user.avatar}
+                alt={user.fullname}
+                width="50"
+                height="50"
+                style={{ borderRadius: "100%" }}
               />
-            </Link>
+            </>
           ) : (
             <Link to={"/Signin"}>
               <Button text="Login" fsize="16px" padding="3px 20px" />
@@ -101,6 +110,15 @@ export default function MenuAppBar() {
         onClose={() => setOpenDrawer(false)}
       >
         <div className={styles.drawerRoot}>
+          {user != null && (
+            <img
+              src={user.avatar}
+              alt={user.fullname}
+              width="50"
+              height="50"
+              style={{ borderRadius: "100%" }}
+            />
+          )}
           {drawerList.map((item, i) => {
             return (
               <React.Fragment key={i}>

@@ -3,7 +3,7 @@ import cardsStyle from "./cardStyle.module.css";
 import InputCard from "../../../components/Input";
 import Button from "../../../components/Button";
 import axios from "axios";
-import { Backdrop, CircularProgress, Switch } from "@material-ui/core";
+import { Backdrop, CircularProgress } from "@material-ui/core";
 import { baseurl } from "../../../utils/baseUrl";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import Image from "../../../components/Image";

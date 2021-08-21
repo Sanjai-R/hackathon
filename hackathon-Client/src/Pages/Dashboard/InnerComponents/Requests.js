@@ -8,6 +8,8 @@ function Requests() {
   const token = localStorage.getItem("token");
   const [books, setBooks] = useState([]);
   const [product, setProduct] = useState([]);
+
+  console.log(books, product);
   useEffect(() => {
     (() => {
       axios
@@ -17,7 +19,7 @@ function Requests() {
           },
         })
         .then((res) => {
-          if (res.data.sucess) {
+          if (res.data.success) {
             setBooks(res.data.data);
           }
         })
@@ -25,6 +27,10 @@ function Requests() {
           alert("something went wrong");
         });
     })();
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
     (() => {
       axios
         .get(`${baseurl}/admin/get-uploaded-stationarys`, {
@@ -33,7 +39,7 @@ function Requests() {
           },
         })
         .then((res) => {
-          if (res.data.sucess) {
+          if (res.data.success) {
             setProduct(res.data.data);
           }
         })
@@ -41,7 +47,8 @@ function Requests() {
           alert("something went wrong");
         });
     })();
-  });
+    // eslint-disable-next-line
+  }, []);
 
   const approveBook = (id) => {
     axios
@@ -117,12 +124,15 @@ function Requests() {
 
   return (
     <div>
-      {books.length == 0 && <h1 className={styles.root}>No Book Requests</h1>}
+      {books.length === 0 && <h1 className={styles.root}>No Book Requests</h1>}
       {books.map((books, index) => {
         return (
           <div className={styles.root} key={index}>
-            <h1>{books.title}</h1>
-            <p>Request By :</p>
+            <h1>{books.bookname}</h1>
+            <br />
+            <p>Request By : {books.askedby.fullname}</p>
+            <br />
+            <p>Request User Mail : {books.askedby.email}</p>
             <br />
             <Button text="Approve" onClick={() => approveBook(books._id)} />
             <br />
@@ -131,14 +141,17 @@ function Requests() {
           </div>
         );
       })}
-      {product.length == 0 && (
+      {product.length === 0 && (
         <h1 className={styles.root}>No Product Requests</h1>
       )}
       {product.map((product, index) => {
         return (
           <div className={styles.root} key={index}>
             <h1>{product.title}</h1>
-            <p>Request By :</p>
+            <br />
+            <p>Request By : {product.askedby.fullname}</p>
+            <br />
+            <p>Request User Mail : {product.askedby.email}</p>
             <br />
             <Button
               text="Approve"

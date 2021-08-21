@@ -3,7 +3,9 @@ import { Books } from "../InterCOM/models.js";
 const getBooks = (req, res) => {
   const userId = req.user._id;
   Books.find({ uploadby: userId, isasked: true })
+    .populate({ path: "askedby", model: "User" })
     .then((books) => {
+      console.log(books);
       res.json({
         success: true,
         data: books,
