@@ -2,27 +2,21 @@ import cloudinary from "../../utils/clouidinary.js";
 import { Stationary, User } from "../InterCOM/models.js";
 import path from "path";
 
-let __dirname = path.resolve();
+const __dirname = path.resolve();
 
 const uploadStationary = async (req, res) => {
-  const image = req.files?.file;
+  const image = req.files;
 
   const { title, desc } = req.body;
 
-  const url =
+  let url =
     "https://advertisingabc.websites.co.in/obaju-turquoise/img/product-placeholder.png";
 
   if (image) {
-    image.mv(
-      `${__dirname}/public/assets/uploads/${image.name}`,
-      (err) => {
-        if (err) {
-          console.error(err);
-          return false;
-        }
-        url = `${__dirname}/public/assets/uploads/${image.name}`;
-      }
+    const uri = await image.file.mv(
+      `${__dirname}/public/assets/uploads/${image.name}`
     );
+    url = `${__dirname}/public/assets/uploads/${image.name}`;
   }
 
   await cloudinary.v2.uploader.upload(url, async (err, result) => {

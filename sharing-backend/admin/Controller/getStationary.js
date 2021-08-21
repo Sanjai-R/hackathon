@@ -3,6 +3,7 @@ import { Stationary } from "../InterCOM/models.js";
 const getStationary = (req, res) => {
   const userId = req.user._id;
   Stationary.find({ uploadby: userId, isasked: true })
+    .populate({ path: "askedby", model: "User" })
     .then((stationary) => {
       res.json({
         success: true,
