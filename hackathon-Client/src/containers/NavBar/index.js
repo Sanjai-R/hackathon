@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "10px 8%",
     alignItems: "center",
     [theme.breakpoints.down("md")]: {
-      padding: "10px 10%",
+      padding: "10px 5%",
     },
   },
 }));
