@@ -7,7 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { baseurl } from "../../utils/baseUrl";
 import { useDispatch } from "react-redux";
-import { logout, auth } from "../../redux/Actions/Actiontype";
+import {  auth } from "../../redux/Actions/Actiontype";
 export default function Signup() {
   const classes = CardStyles();
   const [username, setUsername] = useState("");
