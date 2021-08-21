@@ -10,5 +10,5 @@ React JS, Express JS, Cloudinary, Mongo Db
 
 ## Note
 
-For Dev server yarn run dev
-For Dev client yarn run start
+ <h3>For Run  server : yarn install yarn run dev</h3>
+ <h3>For Run client : yarn install yarn run start</h3>
