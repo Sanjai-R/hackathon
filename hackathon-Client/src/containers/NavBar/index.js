@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import { Link } from "react-router-dom";
 import styles from "./style.module.css";
 import Button from "../../components/Button";
+import axios from "axios";
+import { logout, auth } from "../../redux/Actions/Actiontype";
+import { baseurl } from "../../utils/baseUrl";
+import { useSelector, useDispatch } from "react-redux";
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "#fff",
@@ -23,14 +27,34 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MenuAppBar() {
-  
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.authData);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    axios
+      .get(`${baseurl}/auth/get-user-by-token`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((res) => {
+        if (res.data.success) {
+          dispatch({ type: auth, data: res.data });
+        } else {
+          alert(res.data.desc);
+        }
+      });
+  }, []);
   const classes = useStyles();
   const drawerList = [
     { text: "Home", slug: "/" },
     { text: "Books", slug: "/books" },
     { text: "Stationary", slug: "/stationary" },
-    { text: "Chat", slug: "/chat" }
+    { text: "Chat", slug: "/chat" },
+    { text: "DashBoard", slug: "/DashBoard" }
   ];
+
+  console.log(user);
   return (
     <>
       <AppBar position="static" className={classes.root}>
@@ -43,9 +67,18 @@ export default function MenuAppBar() {
               </Link>
             );
           })}
-          <Link to={"/Signin"}>
-            <Button text="Login" fsize="16px" padding="3px 20px" />
-          </Link>
+
+          {user != null ? (
+            <Link to={"/Signin"}>
+              <Button text="Logout" fsize="16px" padding="3px 20px" onClick={() => {
+                dispatch({type: logout});
+              }}/>
+            </Link>
+          ) : (
+            <Link to={"/Signin"}>
+              <Button text="Login" fsize="16px" padding="3px 20px" />
+            </Link>
+          )}
         </div>
       </AppBar>
     </>

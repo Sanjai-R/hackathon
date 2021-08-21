@@ -5,6 +5,8 @@ import generateAccessToken from "../../utils/generateToken.js";
 const loginUser = (req, res) => {
   const { username, password } = req.body;
 
+  console.log(username, password);
+
   if (username.length === 0 && password.length === 0) {
     res.status(401).json({
       success: false,
@@ -30,6 +32,7 @@ const loginUser = (req, res) => {
         }
         if (isMatch) {
           const accessToken = generateAccessToken({ user: user.username });
+          console.log(username, password);
           res.json({
             success: true,
             username: user.username,
@@ -38,7 +41,7 @@ const loginUser = (req, res) => {
             accesstoken: accessToken,
           });
         } else {
-          res.status(501).json({
+          res.json({
             success: false,
             desc: "Wrong Password",
           });

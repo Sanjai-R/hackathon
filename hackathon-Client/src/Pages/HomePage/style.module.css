@@ -17,12 +17,19 @@
 }
 .left_content_title {
   color: #3930d8;
+
   font-size: 42px;
   font-weight: 600;
 }
 .left_content_subtitle {
   font-size: 18px;
   line-height: 30px;
+  font-size: 38px;
+  font-weight: 600;
+}
+.left_content_subtitle {
+  font-size: 19px;
+  line-height: 1.5;
   font-weight: 400;
   width: 90%;
 }
@@ -42,12 +49,11 @@
   .left_content_subtitle {
     font-size: 14px;
   }
-  .exp_btn{
+  .exp_btn {
     text-align: center;
-}
+  }
 }
 @media only screen and (max-width: 1280px) {
-
   .left_content_title {
     font-size: 42px;
   }
@@ -55,5 +61,4 @@
     font-size: 20px;
     width: 100%;
   }
-  
 }

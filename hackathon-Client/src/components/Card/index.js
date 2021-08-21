@@ -38,22 +38,25 @@ const Cards = ({ data }) => {
         </Typography>
       </div>
 
-      <div className={classes.overlay2}>
+      {/* <div className={classes.overlay2}>
         <Link to="/Create">
-          {" "}
-          {/* for editing*/}
+
           <Button style={{ color: "white" }} size="small">
             <MoreHorizIcon fontSize="default" />
           </Button>
         </Link>
-      </div>
+      </div> */}
 
       <Typography
         className={classes.title}
         gutterBottom
         variant="h5"
         component="h2"
-        style={{ fontFamily: "Montserrat" }}
+        style={{
+          fontFamily: "Montserrat",
+          marginBottom: "0px",
+          marginTop: "10px"
+        }}
       >
         {data.bookname}
       </Typography>
@@ -68,10 +71,8 @@ const Cards = ({ data }) => {
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <CustomButton text="view more" fsize="14px"></CustomButton>
-       
         <Button size="small" color="primary">
-          <DeleteIcon fontSize="small" style={{ color: "#4F46E5" }} /> Delete
+          <CustomButton text="view more" fsize="14px"></CustomButton>
         </Button>
       </CardActions>
     </Card>

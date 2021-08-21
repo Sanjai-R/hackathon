@@ -20,9 +20,8 @@ export default function HomePage() {
             <div className={styles.exp_btn}>
               <Button
                 text="Explore stuffs"
-                fsize="22px"
-                width="50%"
-                height="50px"
+                fsize="18px"
+                
               />
             </div>
           </div>

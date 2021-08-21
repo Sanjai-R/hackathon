@@ -1,0 +1,11 @@
+::1 - - [21/Aug/2021:05:12:52 +0000] "POST /auth/login HTTP/1.1" 404 41
+::1 - - [21/Aug/2021:05:13:16 +0000] "POST /auth/login HTTP/1.1" 404 41
+::1 - - [21/Aug/2021:05:14:10 +0000] "POST /auth/login HTTP/1.1" 404 41
+::1 - - [21/Aug/2021:05:14:20 +0000] "POST /auth/login HTTP/1.1" 404 41
+::1 - - [21/Aug/2021:05:33:51 +0000] "GET /auth HTTP/1.1" 404 143
+::1 - - [21/Aug/2021:05:34:02 +0000] "GET /auth/get HTTP/1.1" 404 147
+::1 - - [21/Aug/2021:05:34:07 +0000] "GET /auth/get-userby HTTP/1.1" 404 154
+::1 - - [21/Aug/2021:05:34:11 +0000] "GET /auth/get-userbytoken HTTP/1.1" 404 159
+::1 - - [21/Aug/2021:05:34:14 +0000] "GET /auth/get-user- HTTP/1.1" 404 153
+::1 - - [21/Aug/2021:05:34:28 +0000] "GET /auth/get-user-by-token,eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoicG9weiIsImlhdCI6MTYyOTUyMzg0MSwiZXhwIjoxNjI5Njk2NjQxfQ.WTCgt96G4N2TcWJ6LO4hRTbqoae338mSFkixSw8h0VM HTTP/1.1" 404 309
+::1 - - [21/Aug/2021:05:35:57 +0000] "GET /auth/get-user-by-token,%7Bheaders:%7B%20%20%20%20%20%20%20authorization:%22Bearer%20%22+token%20%20%20%20%20%7D%7D HTTP/1.1" 404 253
