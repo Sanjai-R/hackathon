@@ -1,5 +1,4 @@
 import cloudinary from "../../utils/clouidinary.js";
-import fileUpload from "express-fileupload";
 import { Books, User } from "../InterCOM/models.js";
 import path from "path";
 
@@ -7,7 +6,6 @@ const __dirname = path.resolve();
 
 const uploadBook = async (req, res) => {
   const image = req.files?.file;
-
   const { title, desc } = req.body;
 
   const url =

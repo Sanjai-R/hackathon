@@ -1,5 +1,4 @@
 import cloudinary from "../../utils/clouidinary.js";
-import fileUpload from "express-fileupload";
 import { Stationary, User } from "../InterCOM/models.js";
 import path from "path";
 

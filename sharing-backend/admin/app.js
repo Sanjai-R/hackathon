@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import express from "express";
-
+import fileUpload from "express-fileupload";
 import fs from "fs";
 import path from "path";
 
@@ -23,6 +23,7 @@ app.use(
     extended: true,
   })
 );
+app.use(fileUpload());
 app.use(compression());
 app.use(helmet());
 

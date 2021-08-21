@@ -1,18 +1,23 @@
 import fs from "fs";
+import path from "path";
 import cloudinary from "../../utils/clouidinary.js";
 import { User } from "../InterCOM/models.js";
 
 const updateSettings = async (req, res) => {
   const { isChat } = req.body;
   const username = req.user.username;
+  const __dirname = path.resolve();
 
   if (!req.files || Object.keys(req.files).length === 0) {
     User.updateOne(
       { username: username },
       {
-        ischat: isChat,
+        ischat: Boolean(isChat),
       },
-      (err) => {
+      {
+        new: true,
+      },
+      (err, docs) => {
         if (err) {
           console.error(err);
           res.status(500).json({
@@ -22,6 +27,7 @@ const updateSettings = async (req, res) => {
         } else {
           res.json({
             success: true,
+            data: docs,
           });
         }
       }
@@ -33,7 +39,7 @@ const updateSettings = async (req, res) => {
 
   if (avatar) {
     avatar.mv(
-      `${__dirname}/public/assets/uploads/${userName}-${avatar.name}`,
+      `${__dirname}/public/assets/uploads/${username}-${avatar.name}`,
       (err) => {
         if (err) {
           console.error(err);
@@ -47,7 +53,7 @@ const updateSettings = async (req, res) => {
     );
 
     await cloudinary.v2.uploader.upload(
-      `${__dirname}/public/assets/uploads/${userName}-${avatar.name}`,
+      `${__dirname}/public/assets/uploads/${username}-${avatar.name}`,
       (err, result) => {
         if (err) {
           console.error(err);
@@ -59,10 +65,11 @@ const updateSettings = async (req, res) => {
           User.updateOne(
             { username: username },
             {
-              ischat: isChat,
+              ischat: Boolean(isChat),
               avatar: result.secure_url,
             },
-            (err) => {
+            { new: true },
+            (err, docs) => {
               if (err) {
                 console.error(err);
                 res.status(500).json({
@@ -72,6 +79,7 @@ const updateSettings = async (req, res) => {
               } else
                 res.json({
                   success: true,
+                  data: docs,
                 });
             }
           );
@@ -80,7 +88,7 @@ const updateSettings = async (req, res) => {
     );
 
     fs.unlinkSync(
-      `${__dirname}/public/assets/uploads/${userName}-${avatar.name}`
+      `${__dirname}/public/assets/uploads/${username}-${avatar.name}`
     );
   }
 };
