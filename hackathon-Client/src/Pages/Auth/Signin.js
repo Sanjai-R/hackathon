@@ -8,39 +8,57 @@ import axios from "axios";
 import { baseurl } from "../../utils/baseUrl";
 import { logout, auth } from "../../redux/Actions/Actiontype";
 import { useDispatch } from "react-redux";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+const CustomToast = ({ text }) => {
+  return (
+    <div>
+      <h4>{text}</h4>
+    </div>
+  );
+};
+toast.configure();
 export default function Signup() {
   const classes = CardStyles();
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const hisrory = useHistory();
-
   const loginHandller = () => {
     if (username.length > 0 && password.length > 0) {
       const data = {
         username: username,
-        password: password,
+        password: password
       };
       axios
         .post(`${baseurl}/auth/login`, data)
         .then((res) => {
           if (res.data.success) {
-            
             localStorage.setItem("token", res.data.accesstoken);
             dispatch({ type: auth, data: res.data });
             hisrory.push("/");
           } else {
-            alert(res.data.desc);
+            notify(res.data.desc);
           }
         })
         .catch((err) => {
-          alert("Something Went Wrong! Try Again");
+          notify("Something went wrong")
         });
     } else {
-      alert("All Fields Are Required");
+      notify("All fields are required");
     }
   };
-
+  const notify = (text) => {
+    toast.info(<CustomToast text = {text} />, {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined
+    });
+  };
   return (
     <>
       <Card className={classes.root}>

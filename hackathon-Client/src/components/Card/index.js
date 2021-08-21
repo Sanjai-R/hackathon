@@ -1,22 +1,63 @@
-import React, { useState } from "react";
+import React, {useEffect } from "react";
 import {
   Card,
   CardActions,
   CardContent,
   CardMedia,
-  Button,
   Typography,
 } from "@material-ui/core/";
+import {  auth } from "../../redux/Actions/Actiontype";
+import axios from "axios";
 import CustomButton from "../Button";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
+
 import useStyles from "./style";
 import { Link } from "react-router-dom";
-
-
+import { baseurl } from "../../utils/baseUrl";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+const CustomToast = () => {
+  return (
+    <div>
+      <h4>Please login to view more information.</h4>
+    </div>
+  );
+};
+toast.configure();
 const Cards = ({ data,type }) => {
-  
+  const dispatch = useDispatch();
   const classes = useStyles();
-  console.log(type)
+  console.log(type);
+  const user = useSelector((state) => state.user.authData);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    axios
+      .get(`${baseurl}/auth/get-user-by-token`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((res) => {
+        if (res.data.success) {
+          dispatch({ type: auth, data: res.data });
+        } else {
+          alert(res.data.desc);
+        }
+      });
+  }, []);
+      const notify = () => {
+        if (user == null) {
+          toast.info(<CustomToast />, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined
+          });
+        }
+      };
   return (
     <Card className={classes.card}>
       <CardMedia
@@ -62,9 +103,21 @@ const Cards = ({ data,type }) => {
       </CardContent>
       <CardActions className={classes.cardActions}>
         <div style={{ margin: "5px 8px" }}>
-          <Link to={`/SingleProduct/${data._id}/${type}`}>
-            <CustomButton text="view more" fsize="14px"></CustomButton>
-          </Link>
+          {user == null ? (
+            <CustomButton
+              text="view more"
+              fsize="14px"
+              onClick={notify}
+            ></CustomButton>
+          ) : (
+            <Link to={`/SingleProduct/${data._id}/${type}`}>
+              <CustomButton
+                text="view more"
+                fsize="14px"
+                
+              ></CustomButton>
+            </Link>
+          )}
         </div>
       </CardActions>
     </Card>
