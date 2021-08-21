@@ -26,7 +26,7 @@ export default function Signup() {
         .then((res) => {
           if (res.data.success) {
             localStorage.setItem("token", res.data.accesstoken);
-             dispatch({ type: auth, data: res.data });
+            dispatch({ type: auth, data: res.data });
             hisrory.push("/");
           } else {
             alert(res.data.desc);
@@ -58,9 +58,9 @@ export default function Signup() {
           />
           <Button
             text="Sign in your Account"
-            width="80%"
-            padding="10px 20px"
-            margin="20px 10%"
+            width="92%"
+            padding="10px 1%"
+            margin="20px 4%"
             onClick={loginHandller}
           />
           <hr style={{ width: "100%" }} />

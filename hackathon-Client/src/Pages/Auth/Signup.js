@@ -28,7 +28,7 @@ export default function Signup() {
         username,
         fullname,
         email,
-        password
+        password,
       };
 
       axios
@@ -79,16 +79,17 @@ export default function Signup() {
           />
           <Button
             text="Sign in your Account"
-            width="95%"
-            padding="15px 5px"
+            width="92%"
+            padding="15px 1%"
+            margin="20px 4%"
             onClick={registerHandller}
           />
 
           <hr style={{ margin: "20px", width: "90%" }} />
           <p style={{ textAlign: "center", margin: "10px" }}>OR</p>
-          <Link to="/Signin" className={classes.txt_btn}>
-            Already have an account
-          </Link>
+          <div className={classes.txt_btn}>
+            <Link to="/Signin">Already have an account</Link>
+          </div>
         </div>
       </Card>
     </>

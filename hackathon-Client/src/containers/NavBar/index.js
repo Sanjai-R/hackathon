@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import { Link } from "react-router-dom";
@@ -8,6 +8,9 @@ import axios from "axios";
 import { logout, auth } from "../../redux/Actions/Actiontype";
 import { baseurl } from "../../utils/baseUrl";
 import { useSelector, useDispatch } from "react-redux";
+import { IconButton, Drawer, Divider } from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "#fff",
@@ -21,21 +24,22 @@ const useStyles = makeStyles((theme) => ({
     padding: "10px 8%",
     alignItems: "center",
     [theme.breakpoints.down("md")]: {
-      padding: "10px 10%"
-    }
-  }
+      padding: "10px 10%",
+    },
+  },
 }));
 
 export default function MenuAppBar() {
   const dispatch = useDispatch();
+  const [openDrawer, setOpenDrawer] = useState(false);
   const user = useSelector((state) => state.user.authData);
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
       .get(`${baseurl}/auth/get-user-by-token`, {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       })
       .then((res) => {
         if (res.data.success) {
@@ -51,14 +55,18 @@ export default function MenuAppBar() {
     { text: "Books", slug: "/books" },
     { text: "Stationary", slug: "/stationary" },
     { text: "Chat", slug: "/chat" },
-    { text: "DashBoard", slug: "/DashBoard" }
+    { text: "DashBoard", slug: "/DashBoard" },
   ];
 
-  console.log(user);
   return (
     <>
       <AppBar position="static" className={classes.root}>
         <h2>ShoppingCaring</h2>
+        <div className={styles.menuIco}>
+          <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
+            <MenuIcon style={{ color: "#000" }} />
+          </IconButton>
+        </div>
         <div className={styles.nav_items}>
           {drawerList.map((item, i) => {
             return (
@@ -70,9 +78,14 @@ export default function MenuAppBar() {
 
           {user != null ? (
             <Link to={"/Signin"}>
-              <Button text="Logout" fsize="16px" padding="3px 20px" onClick={() => {
-                dispatch({type: logout});
-              }}/>
+              <Button
+                text="Logout"
+                fsize="16px"
+                padding="3px 20px"
+                onClick={() => {
+                  dispatch({ type: logout });
+                }}
+              />
             </Link>
           ) : (
             <Link to={"/Signin"}>
@@ -81,6 +94,47 @@ export default function MenuAppBar() {
           )}
         </div>
       </AppBar>
+
+      <Drawer
+        anchor="left"
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+      >
+        <div className={styles.drawerRoot}>
+          {drawerList.map((item, i) => {
+            return (
+              <React.Fragment key={i}>
+                <Link
+                  key={i}
+                  to={item.slug}
+                  className={styles.drawer_link_items}
+                >
+                  <p>{item.text}</p>
+                </Link>
+                <Divider />
+              </React.Fragment>
+            );
+          })}
+          <div className={styles.drawer_btn}>
+            {user != null ? (
+              <Link to={"/Signin"}>
+                <Button
+                  text="Logout"
+                  fsize="16px"
+                  padding="3px 20px"
+                  onClick={() => {
+                    dispatch({ type: logout });
+                  }}
+                />
+              </Link>
+            ) : (
+              <Link to={"/Signin"}>
+                <Button text="Login" fsize="16px" padding="3px 20px" />
+              </Link>
+            )}
+          </div>
+        </div>
+      </Drawer>
     </>
   );
 }
