@@ -17,12 +17,12 @@
 }
 .left_content_title {
   color: #3930d8;
-  font-size: 52px;
+  font-size: 38px;
   font-weight: 600;
 }
 .left_content_subtitle {
-  font-size: 28px;
-  line-height: 40px;
+  font-size: 19px;
+  line-height: 1.5;
   font-weight: 400;
 }
 
@@ -41,17 +41,15 @@
   .left_content_subtitle {
     font-size: 20px;
   }
-  .exp_btn{
+  .exp_btn {
     text-align: center;
-}
+  }
 }
 @media only screen and (max-width: 1280px) {
-
   .left_content_title {
     font-size: 42px;
   }
   .left_content_subtitle {
     font-size: 24px;
   }
-  
 }
