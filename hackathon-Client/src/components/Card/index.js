@@ -8,44 +8,34 @@ import {
   Typography,
 } from "@material-ui/core/";
 import CustomButton from "../Button";
-import DeleteIcon from "@material-ui/icons/Delete";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import moment from "moment";
 import { useDispatch } from "react-redux";
 import useStyles from "./style";
 import { Link } from "react-router-dom";
 
 
-const Cards = ({ data }) => {
-  const dispatch = useDispatch();
+const Cards = ({ data,type }) => {
+  
   const classes = useStyles();
-
+  console.log(type)
   return (
     <Card className={classes.card}>
       <CardMedia
         className={classes.media}
         image={
-          data.bookimagepath ||
-          "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
+          type === "book"
+            ? data.bookimagepath
+            : data.productimagepath ||
+              "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
         }
       />
       <div className={classes.overlay}>
         <Typography variant="h6" style={{ fontFamily: "Montserrat" }}>
-          {data.uploadby}
+          {data.uploadby.fullname}
         </Typography>
         <Typography variant="body2" style={{ fontFamily: "Montserrat" }}>
-          9 hours ago{/* {moment(data.createdAt).fromNow()} */}
+          {data.upload_at}
         </Typography>
       </div>
-
-      {/* <div className={classes.overlay2}>
-        <Link to="/Create">
-
-          <Button style={{ color: "white" }} size="small">
-            <MoreHorizIcon fontSize="default" />
-          </Button>
-        </Link>
-      </div> */}
 
       <Typography
         className={classes.title}
@@ -58,7 +48,7 @@ const Cards = ({ data }) => {
           marginTop: "10px"
         }}
       >
-        {data.bookname}
+        {type === "book" ? data.bookname : data.productname}
       </Typography>
       <CardContent>
         <Typography
@@ -67,13 +57,15 @@ const Cards = ({ data }) => {
           component="p"
           style={{ fontFamily: "Montserrat" }}
         >
-          {data.bookdesc}
+          {type === "book" ? data.bookdesc : data.productdesc}
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary">
-          <CustomButton text="view more" fsize="14px"></CustomButton>
-        </Button>
+        <div style={{ margin: "5px 8px" }}>
+          <Link to={`/SingleProduct/${data._id}/${type}`}>
+            <CustomButton text="view more" fsize="14px"></CustomButton>
+          </Link>
+        </div>
       </CardActions>
     </Card>
   );

@@ -1,6 +1,6 @@
 import { logout,auth } from "../Actions/Actiontype";
 export const authReducer = (state = { authData: null }, action) => {
-  
+
   switch (action.type) {
     case auth:
       return { ...state, authData: action.data, loading: false, errors: null };

@@ -25,6 +25,7 @@ export default function Signup() {
         .post(`${baseurl}/auth/login`, data)
         .then((res) => {
           if (res.data.success) {
+            
             localStorage.setItem("token", res.data.accesstoken);
             dispatch({ type: auth, data: res.data });
             hisrory.push("/");

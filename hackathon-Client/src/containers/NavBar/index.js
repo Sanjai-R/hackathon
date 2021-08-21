@@ -60,7 +60,7 @@ export default function MenuAppBar() {
 
   return (
     <>
-      <AppBar position="static" className={classes.root}>
+      <AppBar position="static" className={classes.root}  >
         <h2>ShoppingCaring</h2>
         <div className={styles.menuIco}>
           <IconButton onClick={() => setOpenDrawer(!openDrawer)}>

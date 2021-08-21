@@ -6,6 +6,7 @@
   font-family: "Nunito Sans", sans-serif;
   font-size: 20px;
   font-weight: 500;
+  z-index: 1000;
 }
 .menuIco {
   display: none;
