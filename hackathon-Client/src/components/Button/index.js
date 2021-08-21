@@ -1,8 +1,16 @@
-import React from 'react'
+import React from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
-export default function CustomButton({text,onClick,width,padding,fsize,height}) {
+export default function CustomButton({
+  text,
+  onClick,
+  width,
+  padding,
+  fsize,
+  height,
+  margin,
+}) {
   const btnStyles = makeStyles((theme) => {
     return {
       btn: {
@@ -10,28 +18,29 @@ export default function CustomButton({text,onClick,width,padding,fsize,height}) 
         color: "#fff",
         borderRadius: "5px",
         padding: `${padding}`,
+        margin: `${margin}`,
         height: `${height}`,
         width: `${width}`,
-        fontSize: `${fsize?fsize:"18px"}`,
+        fontSize: `${fsize ? fsize : "18px"}`,
         textTransform: "uppercase",
         fontWeight: 600,
         cursor: "pointer",
         "&:hover": {
-          backgroundColor: "#16191f"
+          backgroundColor: "#16191f",
         },
         [theme.breakpoints.down("md")]: {
-          fontSize: "14px"
+          fontSize: "14px",
         },
         transition:
-          "color 0.15s ease-in-out, background-color 0.15s ease-in-out,border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out"
-      }
+          "color 0.15s ease-in-out, background-color 0.15s ease-in-out,border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out",
+      },
     };
   });
 
-    const styles = btnStyles();
-    return (
-      <Button onClick={onClick} className={styles.btn}  >
-        {text}
-      </Button>
-    );
+  const styles = btnStyles();
+  return (
+    <Button onClick={onClick} className={styles.btn}>
+      {text}
+    </Button>
+  );
 }
