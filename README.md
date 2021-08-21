@@ -1,8 +1,8 @@
 # Book Sharing Portal
 Live - https://share-appfrontend.vercel.app/
-## client - client react
+## client react Js
 
-## server - node Js backend
+## server - node Js
 
 ## Tech Stack
 
