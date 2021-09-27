@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { baseurl } from "../../utils/baseUrl";
+import { baseUrl } from "../../utils/baseUrl";
 import { Container } from "@material-ui/core";
 import styles from "./style.module.css";
 import Button from "../../components/Button/";
@@ -14,7 +14,7 @@ export default function SingleProduct() {
 
   const fetchSingleBooks = async () => {
     await axios
-      .get(`${baseurl}/api/get-book-by-id?id=${id}`, {
+      .get(`${baseUrl}/api/get-book-by-id?id=${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -26,7 +26,7 @@ export default function SingleProduct() {
   };
   const fetchSingleStationary = async () => {
     await axios
-      .get(`${baseurl}/api/get-stationary-by-id?id=${id}`, {
+      .get(`${baseUrl}/api/get-stationary-by-id?id=${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -46,7 +46,7 @@ export default function SingleProduct() {
       type === "book" ? "api/request-books" : "api/request-stationary";
 
     axios
-      .get(`${baseurl}/${slug}?id=${id}`, {
+      .get(`${baseUrl}/${slug}?id=${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

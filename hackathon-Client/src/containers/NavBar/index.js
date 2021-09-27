@@ -6,7 +6,7 @@ import styles from "./style.module.css";
 import Button from "../../components/Button";
 import axios from "axios";
 import { logout, auth } from "../../redux/Actions/Actiontype";
-import { baseurl } from "../../utils/baseUrl";
+import { baseUrl } from "../../utils/baseUrl";
 import { useSelector, useDispatch } from "react-redux";
 import { IconButton, Drawer, Divider } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -36,7 +36,7 @@ export default function MenuAppBar() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get(`${baseurl}/auth/get-user-by-token`, {
+      .get(`${baseUrl}/auth/get-user-by-token`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -44,8 +44,6 @@ export default function MenuAppBar() {
       .then((res) => {
         if (res.data.success) {
           dispatch({ type: auth, data: res.data });
-        } else {
-          alert(res.data.desc);
         }
       });
     // eslint-disable-next-line

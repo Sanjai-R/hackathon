@@ -4,7 +4,7 @@ import InputCard from "../../../components/Input";
 import Button from "../../../components/Button";
 import axios from "axios";
 import { Backdrop, CircularProgress } from "@material-ui/core";
-import { baseurl } from "../../../utils/baseUrl";
+import { baseUrl } from "../../../utils/baseUrl";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import Image from "../../../components/Image";
 
@@ -30,7 +30,7 @@ function Settings() {
   useEffect(() => {
     (() => {
       axios
-        .get(`${baseurl}/admin/get-settings`, {
+        .get(`${baseUrl}/admin/get-settings`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -60,7 +60,7 @@ function Settings() {
     data.append("isChat", isChat);
 
     axios
-      .post(`${baseurl}/admin/update-settings`, data, {
+      .post(`${baseUrl}/admin/update-settings`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

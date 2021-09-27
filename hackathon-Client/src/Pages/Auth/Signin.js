@@ -5,7 +5,7 @@ import { CardStyles } from "./style.js";
 import Button from "../../components/Button";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-import { baseurl } from "../../utils/baseUrl";
+import { baseUrl } from "../../utils/baseUrl";
 import { auth } from "../../redux/Actions/Actiontype";
 import { useDispatch } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
@@ -28,10 +28,10 @@ export default function Signup() {
     if (username.length > 0 && password.length > 0) {
       const data = {
         username: username,
-        password: password
+        password: password,
       };
       axios
-        .post(`${baseurl}/auth/login`, data)
+        .post(`${baseUrl}/auth/login`, data)
         .then((res) => {
           if (res.data.success) {
             localStorage.setItem("token", res.data.accesstoken);
@@ -42,21 +42,21 @@ export default function Signup() {
           }
         })
         .catch((err) => {
-          notify("Something went wrong")
+          notify("Something went wrong");
         });
     } else {
       notify("All fields are required");
     }
   };
   const notify = (text) => {
-    toast.info(<CustomToast text = {text} />, {
+    toast.info(<CustomToast text={text} />, {
       position: "top-right",
       autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      progress: undefined
+      progress: undefined,
     });
   };
   return (

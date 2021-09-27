@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./listStyle.module.css";
 import Button from "../../../components/Button";
 import axios from "axios";
-import { baseurl } from "../../../utils/baseUrl";
+import { baseUrl } from "../../../utils/baseUrl";
 
 function Requests() {
   const token = localStorage.getItem("token");
@@ -13,7 +13,7 @@ function Requests() {
   useEffect(() => {
     (() => {
       axios
-        .get(`${baseurl}/admin/get-uploaded-books`, {
+        .get(`${baseUrl}/admin/get-uploaded-books`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -33,7 +33,7 @@ function Requests() {
   useEffect(() => {
     (() => {
       axios
-        .get(`${baseurl}/admin/get-uploaded-stationarys`, {
+        .get(`${baseUrl}/admin/get-uploaded-stationarys`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -52,7 +52,7 @@ function Requests() {
 
   const approveBook = (id) => {
     axios
-      .get(`${baseurl}/admin/approve-book?bookid=${id}`, {
+      .get(`${baseUrl}/admin/approve-book?bookid=${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -71,7 +71,7 @@ function Requests() {
 
   const denyBook = (id) => {
     axios
-      .get(`${baseurl}/admin/deny-book-request?bookid=${id}`, {
+      .get(`${baseUrl}/admin/deny-book-request?bookid=${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -88,7 +88,7 @@ function Requests() {
 
   const approveStationary = (id) => {
     axios
-      .get(`${baseurl}/admin/approve-stationary?id=${id}`, {
+      .get(`${baseUrl}/admin/approve-stationary?id=${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -107,7 +107,7 @@ function Requests() {
 
   const denyStationary = (id) => {
     axios
-      .get(`${baseurl}/admin/deny-stationary-request?id=${id}`, {
+      .get(`${baseUrl}/admin/deny-stationary-request?id=${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -147,7 +147,7 @@ function Requests() {
       {product.map((product, index) => {
         return (
           <div className={styles.root} key={index}>
-            <h1>{product.title}</h1>
+            <h1>{product.productname}</h1>
             <br />
             <p>Request By : {product.askedby.fullname}</p>
             <br />

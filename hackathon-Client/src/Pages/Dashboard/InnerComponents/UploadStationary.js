@@ -4,7 +4,7 @@ import InputCard from "../../../components/Input";
 import Button from "../../../components/Button";
 import axios from "axios";
 import { Backdrop, CircularProgress } from "@material-ui/core";
-import { baseurl } from "../../../utils/baseUrl";
+import { baseUrl } from "../../../utils/baseUrl.js";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) =>
@@ -38,7 +38,7 @@ function UploadStationary() {
       console.log(data.getAll("title"));
 
       axios
-        .post(`${baseurl}/admin/upload-stationary`, data, {
+        .post(`${baseUrl}/admin/upload-stationary`, data, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

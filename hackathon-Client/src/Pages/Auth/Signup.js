@@ -5,9 +5,9 @@ import { CardStyles } from "./style.js";
 import Button from "../../components/Button";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-import { baseurl } from "../../utils/baseUrl";
+import { baseUrl } from "../../utils/baseUrl";
 import { useDispatch } from "react-redux";
-import {  auth } from "../../redux/Actions/Actiontype";
+import { auth } from "../../redux/Actions/Actiontype";
 export default function Signup() {
   const classes = CardStyles();
   const [username, setUsername] = useState("");
@@ -32,7 +32,7 @@ export default function Signup() {
       };
 
       axios
-        .post(`${baseurl}/auth/register`, data)
+        .post(`${baseUrl}/auth/register`, data)
         .then((res) => {
           if (res.data.success) {
             localStorage.setItem("token", res.data.accesstoken);

@@ -6,6 +6,8 @@ import UploadStationary from "./InnerComponents/UploadStationary";
 import Requests from "./InnerComponents/Requests";
 import Settings from "./InnerComponents/Settings";
 import { useEffect } from "react";
+import axios from "axios";
+import { baseUrl } from "../../utils/baseUrl";
 
 const drawerList = [
   { text: "Upload Books", slug: "/upload-books", component: UploadBooks },
@@ -23,9 +25,22 @@ function Dashboard() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (!token) {
-      history.push("/Signin");
-    }
+    (async () => {
+      await axios
+        .get(`${baseUrl}/auth/get-user-by-token`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          if (!res.data.success) {
+            history.push("/Signin");
+          }
+        })
+        .catch((err) => {
+          history.push("/Signin");
+        });
+    })();
     // eslint-disable-next-line
   }, []);
   return (

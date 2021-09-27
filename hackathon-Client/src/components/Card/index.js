@@ -1,6 +1,4 @@
-
-import React, {useEffect } from "react";
-
+import React, { useEffect } from "react";
 
 import {
   Card,
@@ -9,15 +7,15 @@ import {
   CardMedia,
   Typography,
 } from "@material-ui/core/";
-import {  auth } from "../../redux/Actions/Actiontype";
+import { auth } from "../../redux/Actions/Actiontype";
 import axios from "axios";
 import CustomButton from "../Button";
 
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useStyles from "./style";
 import { Link } from "react-router-dom";
 
-import { baseurl } from "../../utils/baseUrl";
+import { baseUrl } from "../../utils/baseUrl";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 const CustomToast = () => {
@@ -28,42 +26,38 @@ const CustomToast = () => {
   );
 };
 toast.configure();
-const Cards = ({ data,type }) => {
+const Cards = ({ data, type }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
-  console.log(type);
   const user = useSelector((state) => state.user.authData);
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get(`${baseurl}/auth/get-user-by-token`, {
+      .get(`${baseUrl}/auth/get-user-by-token`, {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       })
       .then((res) => {
         if (res.data.success) {
           dispatch({ type: auth, data: res.data });
-        } else {
-          alert(res.data.desc);
         }
       });
+    // eslint-disable-next-line
   }, []);
-      const notify = () => {
-        if (user == null) {
-          toast.info(<CustomToast />, {
-            position: "top-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined
-          });
-        }
-      };
-
-
+  const notify = () => {
+    if (user == null) {
+      toast.info(<CustomToast />, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
 
   return (
     <Card className={classes.card}>
@@ -78,7 +72,7 @@ const Cards = ({ data,type }) => {
       />
       <div className={classes.overlay}>
         <Typography variant="h6" style={{ fontFamily: "Montserrat" }}>
-          {data.uploadby.fullname}
+          {data.uploadby && data.uploadby.fullname}
         </Typography>
         <Typography variant="body2" style={{ fontFamily: "Montserrat" }}>
           {data.upload_at}
@@ -118,11 +112,7 @@ const Cards = ({ data,type }) => {
             ></CustomButton>
           ) : (
             <Link to={`/SingleProduct/${data._id}/${type}`}>
-              <CustomButton
-                text="view more"
-                fsize="14px"
-                
-              ></CustomButton>
+              <CustomButton text="view more" fsize="14px"></CustomButton>
             </Link>
           )}
         </div>
